@@ -9,7 +9,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 /*
   Note:
   DoubleSolenoid is not included in this code.
+  Robot is currently using arcade drive.
 */
+
 public class DriveTrain extends SubsystemBase {
 
   public final Talon m_leftMotorFront = new Talon(3);
