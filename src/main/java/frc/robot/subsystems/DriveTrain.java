@@ -14,22 +14,33 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveTrain extends SubsystemBase {
 
-  public final Talon m_leftMotorFront = new Talon(3);
-  public final Talon m_leftMotorBack = new Talon(4);
-  public final Talon m_rightMotorFront = new Talon(1);
-  public final Talon m_rightMotorBack = new Talon(2);
+  public MotorControllerGroup leftSide, rightSide;
+  public Talon FL, FR, RL, RR;
+  // ^ FrontLeft, FrontRight, RearLeft, RearRight
+  public DifferentialDrive drive;
+  public Joystick PS4Controller;
 
-  MotorControllerGroup rightSide = new MotorControllerGroup(m_rightMotorFront, m_rightMotorBack);
-  MotorControllerGroup leftSide = new MotorControllerGroup(m_leftMotorFront, m_leftMotorBack);
+  public DriveTrain () {
+    Talon FL = new Talon(3);
+    Talon RL = new Talon(4);
+    Talon FR = new Talon(1);
+    Talon RR = new Talon(2);
 
-  private final DifferentialDrive drive = new DifferentialDrive(m_leftMotorFront, m_rightMotorFront);
-  // Other controllers will not work properly with this robot
-  // because each different branded controller have different axis-es corresponding to the joysticks.
-  private final Joystick PS4Controller = new Joystick(0);
+    rightSide = new MotorControllerGroup(FR, RR);
+    leftSide = new MotorControllerGroup(FL, RL);
+
+    drive = new DifferentialDrive(leftSide, rightSide);
+
+    leftSide.setInverted(true);
+
+    // Other controllers will not work properly with this robot
+    // because each different branded controller have different axis-es corresponding to the joysticks.
+    PS4Controller = new Joystick(0);
+  }
 
   @Override
   public void periodic() {
-    drive.arcadeDrive(-PS4Controller.getY(), PS4Controller.getX());
+    drive.arcadeDrive(PS4Controller.getY(), PS4Controller.getX());
   }
 
   @Override
