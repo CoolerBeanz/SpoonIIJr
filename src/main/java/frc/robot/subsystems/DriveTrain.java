@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
@@ -17,8 +18,8 @@ public class DriveTrain extends SubsystemBase {
   public MotorControllerGroup leftSide, rightSide;
   public Talon FL, FR, RL, RR;
   // ^ FrontLeft, FrontRight, RearLeft, RearRight
-  public DifferentialDrive drive;
-  public Joystick PS4Controller;
+  public static DifferentialDrive drive;
+  public static Joystick PS4Controller;
 
   public DriveTrain () {
     Talon FL = new Talon(3);
@@ -38,9 +39,16 @@ public class DriveTrain extends SubsystemBase {
     PS4Controller = new Joystick(0);
   }
 
+  public static void ArcadeDrive () {
+    double direction = -PS4Controller.getRawAxis(1);
+    double steering = PS4Controller.getRawAxis(2);
+
+    drive.arcadeDrive(direction, steering);
+  }
+
   @Override
   public void periodic() {
-    drive.arcadeDrive(PS4Controller.getY(), PS4Controller.getX());
+
   }
 
   @Override
