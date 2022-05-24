@@ -37,14 +37,22 @@ public class DriveTrain extends SubsystemBase {
     // Other controllers will not work properly with this robot
     // because each different branded controller have different axis-es corresponding to the joysticks.
     PS4Controller = new Joystick(0);
+
   }
 
-  public static void ArcadeDrive () {
-    double direction = -PS4Controller.getRawAxis(1);
-    double steering = PS4Controller.getRawAxis(2);
+  void arcadeDrive (double direction, double steering) {
+    direction = -PS4Controller.getRawAxis(1);
+    steering = PS4Controller.getRawAxis(2);
 
     drive.arcadeDrive(direction, steering);
   }
+
+/*  double direction = -PS4Controller.getRawAxis(1);
+    double steering = PS4Controller.getRawAxis(2);
+    
+    drive.arcadeDrive(direction, steering);
+  }
+*/
 
   @Override
   public void periodic() {
@@ -54,6 +62,9 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void simulationPeriodic() {
 
+  }
+
+  public static void ArcadeDrive() {
   }
 
 }
