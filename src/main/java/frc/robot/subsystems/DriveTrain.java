@@ -40,11 +40,12 @@ public class DriveTrain extends SubsystemBase {
 
   }
 
-  void arcadeDrive (double direction, double steering) {
-    direction = -PS4Controller.getRawAxis(1);
-    steering = PS4Controller.getRawAxis(2);
-
+  static void arcadeDrive (double direction, double steering) {
     drive.arcadeDrive(direction, steering);
+  }
+
+  public static void main(String[] args) {
+    arcadeDrive(-PS4Controller.getRawAxis(1), PS4Controller.getRawAxis(2));
   }
 
 /*  double direction = -PS4Controller.getRawAxis(1);
@@ -63,8 +64,4 @@ public class DriveTrain extends SubsystemBase {
   public void simulationPeriodic() {
 
   }
-
-  public static void ArcadeDrive() {
-  }
-
 }
