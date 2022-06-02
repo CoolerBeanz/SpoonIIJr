@@ -12,7 +12,7 @@ public class Pnuematic extends SubsystemBase {
   PneumaticsControlModule pcm;
   Joystick PS4Controller;
 
-    public Pnuematic() {
+    public void pnuematic() {
         ds = pcm.makeDoubleSolenoid(0, 7);
 
         PS4Controller = new Joystick(0);
