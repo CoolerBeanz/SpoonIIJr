@@ -18,10 +18,6 @@ public class Pnuematic extends SubsystemBase {
         PS4Controller = new Joystick(0);
 
         pcm.enableCompressorDigital();
-    }
-    
-    @Override
-    public void periodic() {
 
         if(PS4Controller.getRawButton(2)){
             ds.set(Value.kForward);
