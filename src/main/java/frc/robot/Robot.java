@@ -85,6 +85,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     m_robotContainer.driveRobot();
     m_robotContainer.pnuematicControl();
+    m_robotContainer.pnueaticSetup();
   }
 
   @Override

@@ -62,7 +62,7 @@ public class RobotContainer {
     m_gearShift.switchShift();
   }
 
-  public void pnumaticSetup(){
+  public void pnueaticSetup(){
     m_gearShift.pnuematic();
   }
 }
