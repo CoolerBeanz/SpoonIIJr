@@ -28,6 +28,10 @@ public class Pnuematic extends SubsystemBase {
             ds.set(Value.kReverse);
         }
     }
+
+    public void switchShift() {
+        dsSwitch();
+    }
     
     @Override
     public void periodic() {
