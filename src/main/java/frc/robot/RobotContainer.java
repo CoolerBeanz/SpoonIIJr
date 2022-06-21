@@ -58,11 +58,23 @@ public class RobotContainer {
     m_drivetrain.arcadeDrive(-driver.getRawAxis(1), driver.getRawAxis(2));
   }
 
-  public void pnuematicControl(){
-    m_gearShift.switchShift();
-  }
+  public void pneumaticContoller(){
+    m_gearShift.dsSwitch();
 
-  public void pnueaticSetup(){
-    m_gearShift.pnuematic();
+    /* Introduce this if you want to turn off/on dsSwitch
+
+    boolean isForward;
+    
+    enabled = PS4Controller.getRawButton(2);
+    disabled = PS4Controller.getRawButton(3);
+
+    if (enabled = true)
+      isForward = true;
+    else if (disabled = true)
+      isForward = false;
+
+    /* add the argument isForward into dsSwitch()
+    /* and move the method to the end afterwards.
+    */
   }
 }
