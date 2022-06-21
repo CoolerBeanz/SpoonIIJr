@@ -29,6 +29,7 @@ public class RobotContainer {
   private final PS4Controller driver = new PS4Controller(0);
 
   private final Pnuematic m_gearShift = new Pnuematic();
+  boolean isForward;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -59,9 +60,16 @@ public class RobotContainer {
   }
 
   public void pneumaticContoller(){
-    m_gearShift.dsSwitch();
 
-    /* Introduce this if you want to turn off/on dsSwitch
+    if (driver.getRawButton(2))
+      isForward = true;
+    else if (driver.getRawButton(3))
+      isForward = false;
+
+    m_gearShift.dsSwitch(isForward);
+    
+    /* Previous version of pneumaticController
+    /* (not tested; will probably not work).
 
     boolean isForward;
     
@@ -74,7 +82,7 @@ public class RobotContainer {
       isForward = false;
 
     /* add the argument isForward into dsSwitch()
-    /* and move the method to the end afterwards.
+    /* and rearrange the lines afterwards.
     */
   }
 }
