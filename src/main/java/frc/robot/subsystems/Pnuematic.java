@@ -14,35 +14,27 @@ public class Pnuematic extends SubsystemBase {
   PneumaticsControlModule pcm;
   Joystick PS4Controller;
 
-    public Pnuematic() {
-        ds = pcm.makeDoubleSolenoid(0, 7);
-        pcm.enableCompressorDigital();
+  public Pnuematic() {
+    pcm = new PneumaticsControlModule(1);
+    //  ds = new DoubleSolenoid(0, null, 0, 0);
+    PS4Controller = new Joystick(0);
 
-        PS4Controller = new Joystick(0);
+    ds = pcm.makeDoubleSolenoid(0, 7);
+
+    PS4Controller = new Joystick(0);
+
+    pcm.enableCompressorDigital();
+  }
+
+  public void dsSwitch(boolean enabled) {
+
+    if(enabled = true){
+      ds.set(Value.kForward);
+        
+    }else if(enabled = false){
+      ds.set(Value.kReverse);
     }
-
-    public void dsSwitch(boolean enabled) { 
-        
-        /* Previous verison (not tested yet)
-
-        enabled = PS4Controller.getRawButton(2);
-        disabled = PS4Controller.getRawButton(3);
-        
-        if(enabled = true){
-            ds.set(Value.kForward);
-        }
-        else if(disabled = true){
-            ds.set(Value.kReverse);
-        }
-        */
-
-        if(enabled = true){
-            ds.set(Value.kForward);
-        
-        }else if(enabled = false){
-            ds.set(Value.kReverse);
-        }
-    }
+}
     
     @Override
     public void periodic() {
