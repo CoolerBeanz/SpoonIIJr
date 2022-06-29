@@ -61,12 +61,11 @@ public class RobotContainer {
 
   public void pneumaticContoller(){
 
-    if (driver.getRawButton(2))
-      isForward = true;
-    else if (driver.getRawButton(3))
-      isForward = false;
+    if (driver.getCrossButton())
+    m_gearShift.dsSwitch(true);
+    else if (driver.getTriangleButton())
+    m_gearShift.dsSwitch(false);
 
-    m_gearShift.dsSwitch(isForward);
     
     /* Previous version of pneumaticController
     /* (not tested; will probably not work).
